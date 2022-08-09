@@ -2,10 +2,8 @@
 WARMUP
 This file contains our solutions to the warm-up problem:
 
-Read in a line with any number of opening brackets in any order. It may also contain closing brackets, provided the line could potentially be made valid (e.g. [](< is okay, but [(]< is not).
-Close any brackets necessary to balance the line, and return the full balanced line.
-
-We assume that the input string can be balanced.
+Read in a line with any number of opening brackets in any order. It may also contain closing brackets, provided the line could potentially be made valid (e.g. “[](<” is okay, but “[(]<” is not) by appending brackets.
+Append (to the end only) any brackets necessary to balance the line, and return the full balanced line.
 '''
 
 
