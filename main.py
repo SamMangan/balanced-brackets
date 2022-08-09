@@ -16,15 +16,15 @@ def main():
   print()
 
   # Interactive Demo
-  # line = input("Enter an expression to validate: ")
-  # is_valid = stack_solution(line)
-  # print(f"{line} is {'' if is_valid else 'not'} well formatted!")
-  # print()
+  line = input("Enter an expression to validate: ")
+  is_valid = stack_solution(line)
+  print(f"{line} is {'' if is_valid else 'not'} well formatted!")
+  print()
 
-  # # Warmup excercise to complete valid expressions
-  # # e.g. "[{<" gives ">}]"
-  # line = input("Enter a line with brackets that need closing: ")
-  # balance(line)
-  # print()
+  # Warmup excercise to complete valid expressions
+  # e.g. "[{<" gives ">}]"
+  line = input("Enter a line with brackets that need closing: ")
+  print(balance(line))
+  print()
 
 main()

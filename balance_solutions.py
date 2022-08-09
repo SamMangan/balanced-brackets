@@ -16,9 +16,31 @@ OPEN_TO_CLOSE = {
   "<" : ">",
 }
 
+def matches(closing, opening):
+  return opening in OPEN_TO_CLOSE and closing == OPEN_TO_CLOSE[opening]
+  
+def is_closing(bracket):
+  return bracket in OPEN_TO_CLOSE.values()
+
 def balance(line):
+  
   closed_brackets = ""
+  wait_to_open = None # closing bracket which we're waiting for the opening match of
+  
   for char in reversed(line):
-    if char in OPEN_TO_CLOSE:
+    
+    if wait_to_open:
+      # ignore everything until we find what we're waiting for
+      if matches(wait_to_open, char):
+        # RESUME adding closing brackets
+        wait_to_open = None 
+      
+    elif is_closing(char):
+      # line is assumed balance-able, so we know that everything between this char
+      # and its opening match is already balanced, so we PAUSE adding closing brackets
+      wait_to_open = char
+      
+    elif char in OPEN_TO_CLOSE:
       closed_brackets += OPEN_TO_CLOSE[char]
+      
   return line + closed_brackets
