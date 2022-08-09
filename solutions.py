@@ -13,25 +13,34 @@ def matches(closing, opening):
   return opening in OPEN_TO_CLOSE and closing == OPEN_TO_CLOSE[opening]
   
 def is_closing(bracket):
-  return bracket in OPEN_TO_CLOSE.values() 
+  return bracket in OPEN_TO_CLOSE.values()
+
+def clean_input(line):
+  bracket_symbols = ["[", "]", "{", "}", "(", ")", "<", ">"]
+  symbols_only = [c for c in line if c in bracket_symbols]
+  return "".join(symbols_only)
 
 '''
 1. String manipulation
 '''
 def string_solution(line):
-  prev_length = None
-  length = len(line)
-  while prev_length is None or length < prev_length:
+  line = clean_input(line) # Clean the solution
+
+  keep_going = True
+  while keep_going:
     prev_length = len(line)
     line = line.replace("()", "").replace("[]", "")\
                .replace("{}", "").replace("<>", "")
-    length = len(line)
-  return length == 0
+    keep_going = prev_length != len(line)
+
+  return len(line) == 0
 
 '''
 2. Stacks
 '''
 def stack_solution(line):
+  line = clean_input(line) # Clean the solution
+  
   stack = [] # back of list == "top" of stack
   for char in line:
     if len(stack) > 0:
@@ -47,7 +56,8 @@ def stack_solution(line):
 3. Recursion (hard)
 '''
 def recursive_solution(line):
-
+  line = clean_input(line)
+  
   def find_closing_index(opening_bracket, line):
     closing_index = 1
     opening_count = 1 # unclosed copies of opening_bracket seen so far 
@@ -85,11 +95,3 @@ def recursive_solution(line):
   # substring after the matching brackets
   after = line[closing_index+1:]
   return recursive_solution(between) and recursive_solution(after)
-    
-  
-'''
-Test Harness
-'''
-def is_balanced(line):
-  print(line)
-  return recursive_solution(line)

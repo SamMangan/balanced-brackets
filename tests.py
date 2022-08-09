@@ -1,14 +1,14 @@
-from solutions import is_balanced
+def run_tests(test_subject):
+    assert test_subject("()"), "A single matching pair is balanced"
+    assert test_subject("([{<>}])"), "Nested matching pairs are balanced"
+    assert test_subject("()[]{}"), "Consecutive matching pairs are balanced"
+    assert test_subject("5*(1+4)"), "Maths Expression is balanced"
 
+    assert not test_subject("("), "A single bracket is unbalanced"
+    assert not test_subject("(]"), "A mismatched pair is unbalanced"
+    assert not test_subject("([)]"), "Interleaving brackets are unbalanced"
+    assert not test_subject(
+        ")("), "An 'inside-out' matching pair is unbalanced"
+    assert not test_subject("5*(1+4"), "Maths Expression is unbalanced"
 
-def run_tests():
-  assert is_balanced("()"), "A single matching pair is balanced"
-  assert is_balanced("([{<>}])"), "Nested matching pairs are balanced"
-  assert is_balanced("()[]{}"), "Consecutive matching pairs are balanced"
-  
-  assert not is_balanced("("), "A single bracket is unbalanced"
-  assert not is_balanced("(]"), "A mismatched pair is unbalanced"
-  assert not is_balanced("([)]"), "Interleaving brackets are unbalanced"
-  assert not is_balanced(")("), "An 'inside-out' matching pair is unbalanced"
-
-  print("Tests passed!")
+    print(f"[{test_subject.__name__}] Tests passed!")
