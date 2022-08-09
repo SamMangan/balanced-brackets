@@ -1,5 +1,8 @@
 '''
-This file contains our solutions
+This file contains our solutions to the main problem:
+
+Read in a line with any number of opening and closing brackets in any order. The following characters are count as brackets: ()[]{}<>. The line may also optionally include other non-bracket ASCII characters.
+Return whether or not the line is “balanced”.
 '''
 
 OPEN_TO_CLOSE = {
