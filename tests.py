@@ -13,7 +13,7 @@ def run_is_balanced_tests(test_subject):
 
   print(f"[{test_subject.__name__}] Tests passed!")
 
-  
+
 def run_balance_tests(test_subject):
   # trivial cases
   assert test_subject("") == "", "Balance an empty string"
