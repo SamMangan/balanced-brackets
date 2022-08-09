@@ -1,4 +1,4 @@
-def run_tests(test_subject):
+def run_is_balanced_tests(test_subject):
   assert test_subject("()"), "A single matching pair is balanced"
   assert test_subject("([{<>}])"), "Nested matching pairs are balanced"
   assert test_subject("()[]{}"), "Consecutive matching pairs are balanced"
@@ -10,5 +10,12 @@ def run_tests(test_subject):
   assert not test_subject(
       ")("), "An 'inside-out' matching pair is unbalanced"
   assert not test_subject("5*(1+4"), "Maths Expression is unbalanced"
+
+  print(f"[{test_subject.__name__}] Tests passed!")
+
+  
+def run_balance_tests(test_subject):
+  assert test_subject("(") == "()", "Balance a single opening bracket"
+  assert test_subject("<[(") == "<[()]>", "Balance a sequence of opening brackets"
 
   print(f"[{test_subject.__name__}] Tests passed!")
